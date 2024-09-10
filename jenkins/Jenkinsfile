@@ -32,7 +32,7 @@ pipeline {
                  * This syntax can be used to call the class directly and run that step.
                  * This syntax works fine in Declarative
                  */
-                step([$class: 'ArtifactArchiver', archiveArtifacts artifacts: 'target/my-app-*.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true])
+                archiveArtifacts artifacts: 'target/my-app-*.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
             }
         }
     }
