@@ -1,7 +1,7 @@
 pipeline {
     agent any
      tools {
-        maven 'Maven' 
+        maven 'Maven'
          jdk  'JDK'
     }
     stages {
@@ -23,6 +23,16 @@ pipeline {
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+            }
+        }
+        stage('ArchiveArtifacts') {
+            steps {
+                /*
+                 * Some steps may not be fully implemented with symbols or step names to run directly
+                 * This syntax can be used to call the class directly and run that step.
+                 * This syntax works fine in Declarative
+                 */
+                archiveArtifacts artifacts: 'target/my-app-*.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
             }
         }
     }
