@@ -31,8 +31,10 @@ pipeline {
                  * Some steps may not be fully implemented with symbols or step names to run directly
                  * This syntax can be used to call the class directly and run that step.
                  * This syntax works fine in Declarative
-                 */
+                
                 archiveArtifacts artifacts: 'target/my-app-*.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+                 */
+                step([$class: 'ArtifactArchiver', artifacts: 'target/my-app-*.jar', fingerprint: true])
             }
         }
     }
